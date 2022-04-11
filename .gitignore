@@ -12,6 +12,15 @@
 /hw10/[Ll]ogs/
 /hw10/[Mm]emoryCaptures/
 
+/new/[Ll]ibrary/
+/new/[Tt]emp/
+/new/[Oo]bj/
+/new/[Bb]uild/
+/new/[Bb]uilds/
+/new/[Ll]ogs/
+/new/[Mm]emoryCaptures/
+
+
 # /[Ll]ibrary/
 # /[Tt]emp/
 # /[Oo]bj/
