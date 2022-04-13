@@ -4,25 +4,15 @@ using UnityEngine;
 
 public class CORE : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public Transform enemyPrefab;
     public Transform spawnPoint;
 
     private static List<GameObject> theRooms = new List<GameObject>();
+
     public static void addRoomGO(GameObject go)
     {
         CORE.theRooms.Add(go);
         print("Added Room");
-    }
-    //private List<GameObject> eSpawns = new List<GameObject>(); not needed, remove later
-
-    public void randomEnemyMove()
-    {
-        for (int i = 0; i < 20; i++)
-        
-            Transform eTransform = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-            eTransformt.GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(10, 50), Random.Range(0, 50), Random.Range(10, 50));
-        }
-
     }
 
     public static void display()
@@ -33,12 +23,18 @@ public class CORE : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        randomEnemyMove();
+        for (int i = 0; i < 100; i++)
+        {
+      
+            Transform t = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+            Rigidbody rb = t.GetComponent<Rigidbody>();
+            rb.velocity = new Vector3(Random.Range(10, 30), Random.Range(0, 20), Random.Range(10, 30));
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-    
+        
     }
 }
