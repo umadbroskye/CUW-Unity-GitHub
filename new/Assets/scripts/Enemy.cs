@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player
+public class Enemy
 {
     private string name;
-    private int killCount;
     private Room currentRoom;
 
-    public Player(string name)
+    public Enemy(string name)
     {
         this.name = name;
-        this.killCount = 0;
         this.currentRoom = null;
     }
 
@@ -25,15 +23,6 @@ public class Player
         return this.currentRoom;
     }
 
-    public void addKill()
-    {
-        this.killCount++;
-    }
-
-    public int getKillCount()
-    {
-        return this.killCount;
-    }
 
     public string getName()
     {
