@@ -8,10 +8,19 @@ public class CORE : MonoBehaviour
     public Transform spawnPoint;
 
     private static List<GameObject> theRoomsGos = new List<GameObject>();
+    private static List<GameObject> theTriggers = new List<GameObject>();
     private static List<Room> theRooms = new List<Room>();
     private static Player currentPlayer = null;
     private static Enemy currentEnemy = null;
 
+    public static GameObject getRoom()
+    {
+        return CORE.theRoomsGos[0];
+    }
+    public static void destroyRoom(GameObject g)
+    {
+        Destroy(CORE.theRoomsGos[theTriggers.IndexOf(g)]);
+    }
     public static void setPlayer(Player p)
     {
         CORE.currentPlayer = p;
@@ -42,7 +51,10 @@ public class CORE : MonoBehaviour
         CORE.theRoomsGos.Add(go);
         //print("Added Room");
     }
-
+    public static void addTrigger(GameObject g)
+    {
+        CORE.theTriggers.Add(g);
+    }
     public static void display()
     {
 

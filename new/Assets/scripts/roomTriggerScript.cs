@@ -12,17 +12,20 @@ public class roomTriggerScript : MonoBehaviour
     {
         this.thisRoom = new Room();
         CORE.addRoom(this.thisRoom);
+        CORE.addTrigger(this.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag.Equals("Player"))
         {
+            CORE.destroyRoom(this.gameObject);
             this.thisRoom.setPlayer(CORE.getPlayer()); //lets the new room know about the player
             print("Player now in room: " + this.thisRoom);
         }
         else if(other.gameObject.tag.Equals("enemy"))
         {
+            CORE.destroyRoom(this.gameObject);
             this.thisRoom.setEnemy(CORE.getEnemy()); //lets the new room know about the enemy
             print("Enemy Entered room " + this.thisRoom);
         }
