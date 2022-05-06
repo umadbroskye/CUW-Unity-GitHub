@@ -13,6 +13,11 @@ public class PacMacScript : MonoBehaviour
     public float speed = 20.0f;
     public GameObject pinkGhost;
 
+
+    private float invinLen = 0.0f;
+    private bool isInvin = false;
+
+
     private bool goForward = false;
     private bool goBackward = false;
     private bool goRight = false;
@@ -56,6 +61,16 @@ public class PacMacScript : MonoBehaviour
         else if(goRight)
         {
             rb.velocity = Vector3.right * speed;
+        }
+
+        if(invinLen > 0)
+        {
+            isInvin = true;
+            invinLen -= Time.deltaTime;
+        }
+        else
+        {
+            isInvin = false;
         }
 
         if (Input.GetKeyDown("up"))
@@ -105,6 +120,7 @@ public class PacMacScript : MonoBehaviour
         {
             Destroy(o.gameObject);
             this.score++;
+            invinLen = 10.0f;
         }
         else if (o.gameObject.tag.Equals("rTele"))
         {
@@ -113,6 +129,17 @@ public class PacMacScript : MonoBehaviour
         else if (o.gameObject.tag.Equals("lTele"))
         {
             this.gameObject.transform.position = new Vector3(8.0f, .15f, .5f);
+        }
+        else if (o.gameObject.tag.Equals("Ghost"))
+        {
+            if (isInvin)
+            {
+                Destroy(o.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
